@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competitive Landscape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e1015;
+    --panel: #151821;
+    --panel-2: #191d27;
+    --line: #262b37;
+    --text: #e6e8ee;
+    --muted: #8b92a3;
+    --accent: #6f8cff;
+    --accent-2: #b48cff;
+    --good: #3ecf7a;
+    --warn: #f0a63a;
+    --bad: #f05a5a;
+    --partial: #f5c542;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); }
+  body {
+    font-family: "DM Sans", "Segoe UI", system-ui, sans-serif;
+    font-size: 12px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 1400px; padding: 32px 36px 28px; }
+  h1 {
+    display: inline-block; margin: 0; padding: 2px 6px;
+    font-size: 26px; font-weight: 700; color: #fff;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  }
+  .sub { margin-top: 8px; color: var(--muted); font-size: 12px; display: flex; gap: 10px; align-items: center; }
+  .badge {
+    font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--accent); background: rgba(111,140,255,.12); padding: 2px 8px; border-radius: 3px;
+  }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 22px 0; }
+
+  table { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  th, td { padding: 10px 8px; text-align: center; vertical-align: middle; border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); }
+  th:first-child, td:first-child { border-left: 0; text-align: left; font-weight: 600; width: 150px; padding-left: 14px; }
+  thead th { background: var(--panel-2); font-weight: 600; font-size: 12px; padding: 16px 8px; }
+  thead th.subject { background: #1a2240; color: var(--accent); }
+  thead th.subject .tag { display: block; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); opacity: .85; margin-top: 3px; }
+  td.subject { background: rgba(111,140,255,.06); }
+  tr.section td {
+    background: var(--panel-2); text-align: left; font-size: 9.5px; font-weight: 700;
+    letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 8px 14px;
+  }
+  tbody td { background: var(--panel); }
+  tbody td.subject { background: #182038; }
+  tr:last-child td { border-bottom: 0; }
+  .note { display: block; margin-top: 4px; font-family: "JetBrains Mono", Consolas, monospace; font-size: 9px; color: var(--muted); line-height: 1.35; }
+  .sym { font-size: 13px; font-weight: 700; }
+  .yes { color: var(--good); } .no { color: var(--bad); } .partial { color: var(--partial); }
+  .t-good { color: var(--good); font-weight: 600; } .t-warn { color: var(--warn); font-weight: 600; } .t-bad { color: var(--bad); font-weight: 600; }
+
+  .moat { margin-top: 26px; background: var(--panel); border: 1px solid #2a3350; border-radius: 8px; padding: 18px 22px 22px; }
+  .moat h2 { margin: 0 0 16px; font-size: 13px; color: var(--accent); }
+  .moat h2 span { color: var(--muted); font-weight: 500; }
+  .steps { display: flex; align-items: flex-start; justify-content: space-between; }
+  .step { flex: 1; text-align: center; }
+  .step .icon { font-size: 22px; }
+  .step .st { font-weight: 700; font-size: 11px; margin-top: 6px; }
+  .step .sd { color: var(--muted); font-size: 10px; margin-top: 3px; line-height: 1.4; }
+  .arrow { color: var(--accent); font-size: 16px; padding-top: 18px; }
+
+  h3.pos { font-size: 16px; margin: 30px 0 12px; }
+  .cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .col { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 16px 18px; }
+  .col h4 { margin: 0 0 12px; font-size: 12px; display: flex; align-items: center; gap: 7px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .col ul { list-style: none; margin: 0; padding: 0; }
+  .col li { color: #b9bfcc; font-size: 10.5px; line-height: 1.45; margin-bottom: 7px; padding-left: 14px; position: relative; }
+  .col li::before { content: "→"; color: var(--accent); position: absolute; left: 0; }
+  footer { margin-top: 26px; padding-top: 12px; border-top: 1px solid var(--line); text-align: right; color: var(--muted); font-size: 9.5px; }
+</style>
+</head>
+<body>
+<div class="page" id="root"></div>
+
+<!-- REPORT DATA: replace the JSON below (see references/schema.md) -->
+<script type="application/json" id="report-data">
+{"title":"Example — Competitive Landscape","subtitle":"Replace this data","date":"Month YYYY","subjectLabel":"Subject","columns":["Subject","Competitor A"],"sections":[{"name":"Core Model","rows":[{"feature":"Pricing","cells":[{"text":"Free","tone":"good"},{"text":"Paid","tone":"warn","note":"$10/mo"}]}]}],"moat":{"title":"Subject's Competitive Moat","tagline":"Example","steps":[{"icon":"💬","title":"Step","text":"Description"}]},"positioning":{"strengths":["Example"],"threats":["Example"],"gaps":["Example"]},"footer":"Compiled Month YYYY · Sources: Company websites"}
+</script>
+
+<script>
+(function () {
+  var d = JSON.parse(document.getElementById('report-data').textContent);
+  var esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  };
+  var SYM = { yes: '✓', no: '✗', partial: '◐' };
+
+  function cell(c) {
+    if (typeof c === 'string') c = SYM[c] ? { s: c } : { text: c };
+    var html = '';
+    if (c.s) html += '<span class="sym ' + c.s + '">' + SYM[c.s] + '</span>';
+    if (c.text) html += '<span class="' + (c.tone ? 't-' + c.tone : '') + '">' + esc(c.text) + '</span>';
+    if (c.note) html += '<span class="note">' + esc(c.note) + '</span>';
+    return html;
+  }
+
+  document.title = d.title;
+  var n = d.columns.length;
+  var h = '<h1>' + esc(d.title) + '</h1>';
+  h += '<div class="sub">' + esc(d.subtitle) + ' <span class="badge">' + esc(d.date) + '</span></div><hr>';
+
+  h += '<table><thead><tr><th>Feature</th>';
+  d.columns.forEach(function (name, i) {
+    h += i === 0
+      ? '<th class="subject">' + esc(name) + '<span class="tag">★ ' + esc(d.subjectLabel || 'Subject') + '</span></th>'
+      : '<th>' + esc(name) + '</th>';
+  });
+  h += '</tr></thead><tbody>';
+  d.sections.forEach(function (sec) {
+    h += '<tr class="section"><td colspan="' + (n + 1) + '">' + esc(sec.name) + '</td></tr>';
+    sec.rows.forEach(function (r) {
+      h += '<tr><td>' + esc(r.feature) + '</td>';
+      for (var i = 0; i < n; i++) {
+        h += '<td' + (i === 0 ? ' class="subject"' : '') + '>' + cell(r.cells[i] == null ? '' : r.cells[i]) + '</td>';
+      }
+      h += '</tr>';
+    });
+  });
+  h += '</tbody></table>';
+
+  if (d.moat) {
+    h += '<div class="moat"><h2>🏰 ' + esc(d.moat.title) + (d.moat.tagline ? ' <span>— ' + esc(d.moat.tagline) + '</span>' : '') + '</h2><div class="steps">';
+    d.moat.steps.forEach(function (s, i) {
+      if (i) h += '<div class="arrow">→</div>';
+      h += '<div class="step"><div class="icon">' + esc(s.icon) + '</div><div class="st">' + esc(s.title) + '</div><div class="sd">' + esc(s.text) + '</div></div>';
+    });
+    h += '</div></div>';
+  }
+
+  var p = d.positioning || {};
+  var col = function (title, color, items) {
+    return '<div class="col"><h4><span class="dot" style="background:' + color + '"></span>' + esc(title) + '</h4><ul>' +
+      (items || []).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>';
+  };
+  h += '<h3 class="pos">Competitive Positioning</h3><div class="cols">' +
+    col((d.columns[0]) + ' Strengths', 'var(--good)', p.strengths) +
+    col('Key Threats', 'var(--bad)', p.threats) +
+    col('Market Gaps / Opportunities', 'var(--partial)', p.gaps) + '</div>';
+  h += '<footer>' + esc(d.footer || '') + '</footer>';
+  document.getElementById('root').innerHTML = h;
+
+  // Size the print page to the content so the PDF is one tall page.
+  // Measure after web fonts load; fallback fonts have different metrics.
+  var root = document.getElementById('root');
+  var st = document.createElement('style');
+  document.head.appendChild(st);
+  var size = function () {
+    st.textContent = '@page { size: ' + root.offsetWidth + 'px ' + (root.offsetHeight + 24) + 'px; margin: 0; }';
+  };
+  size();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(size);
+})();
+</script>
+</body>
+</html>
