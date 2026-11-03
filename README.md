@@ -11,6 +11,7 @@ Product management skills for [Claude Code](https://docs.claude.com/en/docs/clau
 | [voice-of-customer-analyser](voice-of-customer-analyser/) | A Voice of Customer report from reviews, NPS comments, or tickets (CSV, Excel, PDF, or text): key themes, sentiment split, topic categories, and prioritized actions. Every review is coded and the percentages are counted, not estimated, with trends and segments when the data allows. | Instructions + any scripting language for counts |
 | [ideation-brainstorming-partner](ideation-brainstorming-partner/) | A turn-based 6-3-5 brainwriting session on a "How Might We" statement: Claude and the user alternate rounds of 3 "Yes, and…" ideas borrowed from other industries, cultures, and nature, then converge on the top 3. | Instructions + [brainwriting template](ideation-brainstorming-partner/references/Brainwriting-template.pdf) |
 | [ux-variants-explorer](ux-variants-explorer/) | Five persona-driven UX variants of a feature (power user, mobile-first, low digital confidence, accessibility-dependent, and privacy skeptic), with wireframes, testable hypotheses, an ease vs effort matrix, a converged design, a test plan, and an interactive prototype with a tab per persona. | Instructions + React prototype as a Claude Artifact |
+| [synthetic-panel](synthetic-panel/) | A synthetic customer panel: grounded AI personas each react to 2–6 headlines, ads, value propositions, or prices in their own subagent. A hidden decoy catches sycophancy, shuffled order catches position bias, a roster check stops option wording leaking into persona cards, and every finding gets a confidence label. A calibration log scores past predictions against real A/B results. Exported as Markdown, HTML, PDF, and PNG. | Python 3 (standard library) + headless Chrome or Edge, parallel subagents |
 | [bmad-prd-generator](bmad-prd-generator/) | A complete PRD for an AI product from a short brief, in the "PRD for AI Dev" format (O.01–DEP.02): 10+ Gherkin user stories, AI benchmarks (latency, quality, and toxicity), governance (anonymization, OAuth 2.0, and XAI), and a BMAD epic and story map. | Instructions + Markdown template |
 
 ## Install
@@ -20,7 +21,7 @@ Copy a skill folder into your Claude Code skills directory:
 - **Windows:** `%USERPROFILE%\.claude\skills\<skill-name>\`
 - **macOS / Linux:** `~/.claude/skills/<skill-name>/`
 
-Claude Code picks the skill up automatically. Then ask, for example, "Build a competitor analysis for Notion", "Make a lean canvas for Duolingo", "Red-team the chatbot at <URL>", "Analyse these interview transcripts", or "Brainstorm: How might we reduce no-shows at clinics?".
+Claude Code picks the skill up automatically. Then ask, for example, "Build a competitor analysis for Notion", "Make a lean canvas for Duolingo", "Red-team the chatbot at <URL>", "Analyse these interview transcripts", or "Brainstorm: How might we reduce no-shows at clinics?", or "Test these three headlines on busy parents with a synthetic panel".
 
 ## How the skills work
 
